@@ -57,27 +57,24 @@ function buildNavigationBarMenu ( landingContainers ) {
 // Add class 'active' to section when near top of viewport
 function differentiateSectionBeingViewed() {
   for (let i = 1; i < landingContainers.length + 1; i++) {
-    let sectionActivelyBeingViewed = document.getElementById("section" + i)
+    let section = document.getElementById("section" + i)
     document.addEventListener(
       "scroll",
       function (event) {
-        if (isElementActivelyBeingViewed(sectionActivelyBeingViewed)) {
-          sectionActivelyBeingViewed.classList.add("section-active-class")
+        if (isElementActivelyBeingViewed(section)) {
+          section.classList.add("section-active-class")
+          let navigationItemBeingViewed = document.getElementById("menu-item-nav-" + i)
+          document.querySelector('.selected')?.classList.remove('selected')
+          navigationItemBeingViewed.classList.add('selected')
         } else {
-          sectionActivelyBeingViewed.classList.remove("section-active-class")
+          section.classList.remove("section-active-class")
         }
       }
     )
   }
   function isElementActivelyBeingViewed(element) {
-    let bounding = element.getBoundingClientRect()
-    return (
-      bounding.top <= 50 &&
-      bounding.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-      bounding.right <=
-      (window.innerWidth || document.documentElement.clientWidth)
-    )
+    let domRect = element.getBoundingClientRect()
+    return domRect.top <= 100 && domRect.bottom >= 100
   }
 }
 // Smooth scroll
