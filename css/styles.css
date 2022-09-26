@@ -31,10 +31,6 @@ h1 {
         font-size: 7em;
         margin: 2em 4rem 1em;
     }
-    .landing__container {
-      max-width: 50em;
-      padding: 4em;
-    }
 }
 
 h2 {
@@ -70,30 +66,42 @@ section {
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
-    text-align: right;
+    text-align: left;
 }
-
+/*
 .navbar__menu li {
     display: inline-block;
 }
-
+*/
 .navbar__menu .menu__link {
+    display: inline-block;
     padding: 1em;
     font-weight: bold;
     text-decoration: none;
     color: #000;
 }
 
+.menu__link.selected,
 .navbar__menu .menu__link:hover {
     background: #333;
     color: #fff;
     transition: ease 0.3s all;
 }
 
-.navbar__menu .menu__link:active {
-  background: #333;
-  color: #fff;
-  transition: ease 0.3s all;
+#navbar__list {
+  display: flex;
+  flex-wrap: wrap;
+}
+/*
+#navbar__list > li {
+  flex: 0 50%;
+}
+*/
+
+@media (min-width: 900px) {
+  #navbar__list {
+    display: block;
+  }
 }
 
 /* Header Styles */
@@ -122,6 +130,13 @@ section {
 .landing__container {
     padding: 1em;
     text-align: left;
+}
+
+@media only screen and (min-width: 35em){
+  .landing__container {
+    max-width: 50em;
+    padding: 4em;
+  }
 }
 
 section:nth-of-type(even) .landing__container {
